@@ -1,0 +1,32 @@
+<template>
+    <lightning-combobox
+            name="progress"
+            label="Select sObject"
+            value={value}
+            placeholder="Select sObject"
+            options={comboboxOptions}
+            onchange={handleCombobox} >
+    </lightning-combobox>
+    <template if:true={showObjectInfo}>
+    <lightning-card title = 'General information'>
+        <p class="slds-p-horizontal_small">Icon</p>
+        <p class="slds-p-horizontal_small">
+            <lightning-icon icon-name = {generalInformation.possibleIconName} alternative-text="Account" title="Account"></lightning-icon>
+        </p>
+        <p class="slds-p-horizontal_small">Label - {generalInformation.label}</p>
+        <p class="slds-p-horizontal_small">Api Name - {generalInformation.apiName}</p>
+        <p class="slds-p-horizontal_small">Key Prefix - {generalInformation.keyPrefix}</p>
+        <p class="slds-p-horizontal_small">Updateable - {generalInformation.updateable}</p>
+        <p class="slds-p-horizontal_small">Queryable - {generalInformation.queryable}</p>
+        <p class="slds-p-horizontal_small">Searchable - {generalInformation.searchable}</p>
+        <p class="slds-p-horizontal_small">Custom - {generalInformation.custom}</p>
+    </lightning-card>
+        <div style="height: 300px;">
+            <lightning-datatable
+                    key-field="apiName"
+                    data={data}
+                    columns={columns}>
+            </lightning-datatable>
+        </div>
+    </template>
+</template>
